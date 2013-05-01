@@ -1,5 +1,6 @@
 jojo
 ====
+
 the 10 second blog-engine for hackers (in javascript).
 
 Inspired heavily by [toto](https://github.com/cloudhead/toto)
