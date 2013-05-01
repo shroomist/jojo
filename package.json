@@ -16,7 +16,8 @@
     "jojo": "*",
     "async": "*",
     "express": "*",
-    "showdown": "*"
+    "showdown": "*",
+    "jade": "*"
   },
   "devDependencies": {
     "ejs": "*"

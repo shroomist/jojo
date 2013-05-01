@@ -5,9 +5,10 @@ var jojo = require('jojo'),
     express = jojo.express;
 var path = require('path');
 
+app.set('view options', { pretty: true });
+app.set('view engine', 'jade');
+app.use(express.static(path.join(__dirname, 'public')));
 app.listen(8080);
 
-app.set('view engine', 'ejs');
-app.use(express.static(path.join(__dirname, 'public')));
 
 console.log('Server is listening to http://127.0.0.1:8080');

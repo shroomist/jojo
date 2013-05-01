@@ -2,4 +2,5 @@
 /startServer.cmd
 /node_modules/jojo/node_modules
 /nodemonw.exe
+/node_modules/
 /publishNpm.sh
