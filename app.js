@@ -1,5 +1,4 @@
 // Require jojo and create a server
-var sys = require('sys')
 var exec = require('child_process').exec;
 var gith = require('gith').create(8081);
 var jojo = require('jojo'),
@@ -16,13 +15,17 @@ app.listen(8080);
 
 
 
-function puts(error, stdout, stderr) { sys.puts(stdout) }
-exec("git pull", puts);
+function puts(error, stdout, stderr) { 
+    console.log(stdout); 
+    console.log('end transmisison') 
+}
 
 gith({
   repo: 'shroomist/jojo'
 }).on( 'all', function( payload ) {
     console.log('Post Recieve happen' );
+    exec("git pull", puts);
+    console.log('execution finished');
 });
 
 console.log('Server is listening to http://127.0.0.1:8080');
