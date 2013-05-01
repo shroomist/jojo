@@ -1,5 +1,5 @@
 {
-  "title": "The Great Test on a new \n article",
+  "title": "The Other Great Test on a new \n article",
   "author": "jazz",
   "date": "2013/05/01",
   "path": "test0"
