@@ -18,11 +18,10 @@ hr
 > block
 >> quote
 
-+ nested
+- nested
   1. lists
   2. so on
-
-+ nest
-* list
+- nest
+- list
   >> quote
 
