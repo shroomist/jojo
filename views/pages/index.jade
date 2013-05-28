@@ -5,7 +5,7 @@ block content
     - each article in visibleArticles
         article.post
           header
-            h1 
+            h3 
               a(href=article.url) #{article.url}#{article.title}
             span.date #{article.date}
           section.content!=article.content

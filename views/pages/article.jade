@@ -1,6 +1,8 @@
-article.post
-  header
-    h1 #{title}
-    span.date #{date}
-  section.content
-    #{content}
+extends ../layout
+block content
+  article.post
+    header
+      h1 #{title}
+      span.date #{date}
+    section.content
+      #{content}

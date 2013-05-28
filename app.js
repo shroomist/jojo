@@ -1,15 +1,33 @@
 // Require jojo and create a server
 var exec = require('child_process').exec;
 var gith = require('gith').create(8081);
-var jojo = require('jojo'),
-// jojo.createServer makes an express server and auto-uses jojo
-    app = jojo.createServer(),
-    express = jojo.express;
+var jojo = require('jojo');
+//    express = jojo.express;
 var path = require('path');
+var express = require('express');
+var stylus = require('stylus');
 
-app.set('view options', { pretty: true });
+var app = express();
+jojo.express = app;
+app.use(stylus.middleware({
+    debug: true,
+    src: __dirname + '/views',
+    dest: __dirname + '/public',
+    compile: stylusCompile
+}));
+app.use(jojo);
+function stylusCompile(str){
+    console.log('stylus compiler');
+    return stylus(str)
+}
+
+
 app.set('view engine', 'jade');
+app.set('view options', { pretty: true });
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 app.listen(8080);
 
 
