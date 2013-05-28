@@ -1,0 +1,61 @@
+doctype xml
+rss(version='2.0', xmlns:atom='<a href="http://www.w3.org/2005/Atom" rel="nofollow">http://www.w3.org/2005/Atom</a>')
+  channel
+    title=title
+    atom:link(href='<a href="http://devsmash.com/feed/rss" rel="nofollow">http://devsmash.com/feed/rss</a>', rel='self', type='application/rss+xml')
+    description Hello
+    id=url
+    -if( articles.length > 0 )
+      var updatedDate = articles[0].rawDate;
+      var updatedDateStr = updatedDate.toISOString();
+    updated=updatedDateStr
+    author
+      name=author
+    - each article in articles
+      entry 
+        title=article.title
+        link(rel="alternate" href=article.url)
+        id=article.url
+        published=article.rawDate.toISOString()
+        updated=article.rawDate.toISOString()
+        author
+          name=author
+        summary(type="html")=article.summary
+        content(type="html")=article.content
+
+<?xml version="1.0" encoding="UTF-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title><%=title%></title>
+  <id><%=url%></id>
+<%
+  if (articles.length > 0) {
+    var updatedDate = articles[0].rawDate,
+        updatedDateStr = updatedDate.toISOString();
+%>
+  <updated><%=updatedDateStr%></updated>
+<%
+  }
+%>
+  <author>
+    <name><%=author%></name>
+  </author>
+
+<%
+  articles.forEach(function (article) {
+%>
+  <entry>
+    <title><%=article.title%></title>
+    <link rel="alternate" href="<%=article.url%>"/>
+    <id><%=article.url%></id>
+    <published><%=article.rawDate.toISOString()%></published>
+    <updated><%=article.rawDate.toISOString()%></updated>
+    <author>
+      <name><%=author%></name>
+    </author>
+    <summary type="html"><%=article.summary%></summary>
+    <content type="html"><%=article.content%></content>
+  </entry>
+<%
+  });
+%>
+</feed>
