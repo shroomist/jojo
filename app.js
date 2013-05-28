@@ -15,7 +15,7 @@ app.use(stylus.middleware({
     dest: __dirname + '/public',
     compile: stylusCompile
 }));
-app.use(jojo);
+//app.use(jojo);
 function stylusCompile(str){
     console.log('stylus compiler');
     return stylus(str)
@@ -30,8 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.listen(8080);
 
-
-
+app.get('/', jojo.index);
+app.get('/:article', jojo.article);
 
 function puts(error, stdout, stderr) { 
     console.log(stdout); 
